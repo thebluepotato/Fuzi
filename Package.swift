@@ -5,31 +5,21 @@ import PackageDescription
 
 let package = Package(
     name: "Fuzi",
-    products: [
+    products: [ 
         .library(name: "Fuzi", targets: ["Fuzi"]),
     ],
+    dependencies: [
+    .package(path: "./Clibxml2")
+    ],
     targets: [
-        .systemLibrary(
-            name: "libxmlFuzi",
-            path: "Module",
-            pkgConfig: "libxml-2.0"/*,
-            providers: [
-                .brew(["libxml2"]),
-                .apt(["libxml2-dev"])
-        ]*/),
-        .target(name: "Fuzi",
-                dependencies: ["libxmlFuzi"],
-                path: "Sources",
-                /*cSettings: [
-             .headerSearchPath("$(SDKROOT)/usr/include/libxml2")
-             ],*/
-            linkerSettings: [
-                .linkedLibrary("xml2")
-            ]
-        ),
-        .testTarget(name: "FuziTests",
-                    dependencies: ["Fuzi"],
-                    path: "Tests"
+        .target(
+            name: "Fuzi",
+            dependencies: ["Clibxml2"],
+            path: "Sources"),
+        .testTarget(
+            name: "FuziTests",
+            dependencies: ["Fuzi"],
+            path: "Tests"
         )
     ]
 )
