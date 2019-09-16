@@ -19,13 +19,13 @@ let package = Package(
         ]*/),
         .target(name: "Fuzi",
                 dependencies: ["libxmlFuzi"],
-                path: "Sources"//,
+                path: "Sources",
                 /*cSettings: [
              .headerSearchPath("$(SDKROOT)/usr/include/libxml2")
              ],*/
-            /*linkerSettings: [
+            linkerSettings: [
                 .linkedLibrary("xml2")
-            ]*/
+            ]
         ),
         .testTarget(name: "FuziTests",
                     dependencies: ["Fuzi"],
