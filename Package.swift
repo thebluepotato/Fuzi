@@ -8,13 +8,9 @@ let package = Package(
     products: [ 
         .library(name: "Fuzi", targets: ["Fuzi"]),
     ],
-    dependencies: [
-    .package(path: "./Clibxml2")
-    ],
     targets: [
         .target(
             name: "Fuzi",
-            dependencies: ["Clibxml2"],
             path: "Sources"),
         .testTarget(
             name: "FuziTests",
