@@ -26,8 +26,8 @@ class DefaultNamespaceXPathTests: XCTestCase {
   var document: Fuzi.XMLDocument!
   override func setUp() {
     super.setUp()
-    let filePath = Bundle(for: DefaultNamespaceXPathTests.self).url(forResource: "ocf", withExtension: "xml")!
     do {
+      let filePath = try XCTUnwrap(Bundle(for: DefaultNamespaceXPathTests.self).url(forResource: "ocf", withExtension: "xml") ?? Bundle.module.url(forResource: "ocf", withExtension: "xml"))
       document = try XMLDocument(data: Data(contentsOf: filePath))
     } catch {
       XCTAssertFalse(true, "Error should not be thrown")

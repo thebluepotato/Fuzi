@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -12,12 +12,15 @@ let package = Package(
         .target(
             name: "Fuzi",
             path: "Sources",
+            exclude: ["Info.plist"],
             linkerSettings: [.linkedLibrary("xml2")]
         ),
         .testTarget(
             name: "FuziTests",
             dependencies: ["Fuzi"],
-            path: "Tests"
+            path: "Tests",
+            exclude: ["Info.plist"],
+            resources: [.process("Resources")]
         )
     ]
 )

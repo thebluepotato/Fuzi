@@ -26,8 +26,8 @@ class XMLTests: XCTestCase {
   var document: Fuzi.XMLDocument!
   override func setUp() {
     super.setUp()
-    let filePath = Bundle(for: XMLTests.self).url(forResource: "xml", withExtension: "xml")!
     do {
+      let filePath = try XCTUnwrap(Bundle(for: XMLTests.self).url(forResource: "xml", withExtension: "xml") ?? Bundle.module.url(forResource: "xml", withExtension: "xml"))
       document = try XMLDocument(data: Data(contentsOf: filePath))
     } catch {
       XCTAssertFalse(true, "Error should not be thrown")
